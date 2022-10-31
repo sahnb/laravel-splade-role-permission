@@ -1,59 +1,40 @@
 <x-admin-layout>
-    <x-action-header>
-        <x-action-heading>
+    <x-admin-header>
+        <x-admin-header-text>
             {{ __('Edit User') }}
-        </x-action-heading>
-        <x-action-link href="{{route('admin.users.index')}}">
+        </x-admin-header-text>
+        <x-admin-header-link href="{{route('admin.users.index')}}">
             {{ __('List User') }}
-        </x-action-link>
-    </x-action-header>
-
+        </x-admin-header-link>
+    </x-admin-header>
     <section aria-labelledby="create-user-heading">
-        <x-splade-form method="put" :default="$user"  :action="route('admin.users.update',$user->id)" unguarded>
-
-            <div class="shadow sm:overflow-hidden sm:rounded-md">
+        <x-splade-form method="put" :default="$user" :action="route('admin.users.update',$user->id)" unguarded>
+            <div class="shadow  sm:rounded-md">
                 <div class="bg-white py-6 px-4 sm:p-6">
                     <div class="mt-6 grid grid-cols-4 gap-6">
                         <div class="col-span-4 sm:col-span-2">
+                            <x-splade-input name="name"
+                                            label="Full Name"/>
+                        </div>
+                        <div class="col-span-4 sm:col-span-2">
+                            <x-splade-input name="email"
+                                            label="Email"/>
+                        </div>
+                        <div class="col-span-4 sm:col-span-2">
+                            <x-splade-input type="password" name="password" label="Update Password"/>
+                        </div>
 
-                            <x-splade-input name="profile.first_name"
-                                            label="First Name"/>
+                        <div class="col-span-4 sm:col-span-2">
+                            <x-splade-select name="role_id" placeholder="Assign Role" label="Role" :options="$roles" choices/>
+                        </div>
 
+                        <div class="col-span-4 sm:col-span-4">
+                            <x-splade-select name="status" placeholder="Status" label="Status" :options="['1'=>'Active','0'=>'Inactive']" choices/>
                         </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-input name="profile.last_name"  label="Last Name"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-input type="email" name="email" label="Email"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-input type="password" name="password" label="Password"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-input name="profile.discord_id"  label="Discord"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-input name="profile.mobile_number"
-                                            label="Mobile Number"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-1">
-                            <x-splade-input name="profile.whatsapp_number"
-                                            label="WhatsApp"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-1">
-                            <x-splade-input name="profile.telegram_number"  label="Telegram"/>
-                        </div>
-                        <div class="col-span-4 sm:col-span-2">
-                            <x-splade-select name="profile.country_id"  label="Country" choices>
-                                @foreach($countries as $country)
-                                     <option
-                                        value="{{$country->id}}" {{$country->id === $user->profile->country_id ? 'selected':'' }}>
-                                        {{$country->name.' | '.$country->code}}
-                                    </option>
-                                @endforeach
-                            </x-splade-select>
-                        </div>
-                        <x-splade-submit class="bg-gold-700 hover:bg-gold-900"/>
+
+                        <x-splade-submit class="bg-gold-700 hover:bg-gold-900">
+                            Update
+                        </x-splade-submit>
                     </div>
                 </div>
             </div>

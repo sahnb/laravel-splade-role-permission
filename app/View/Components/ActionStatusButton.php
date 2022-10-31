@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class ActionStatusButton extends Component
 {
-    public function __construct()
+    public $status;
+
+    public function __construct($status)
     {
-        //
+            $this->status = $status;
     }
 
 
     public function render()
     {
-        return view('components.action-status-button');
+        return view('admin.components.action-status-button');
     }
 }

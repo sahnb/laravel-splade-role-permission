@@ -19,10 +19,9 @@ class UserSeeder extends Seeder
             [
                 'id'             => 1,
                 'name'           => 'Syed Arslan Haider',
-                'email'          => 'sahnb@outlook.com',
+                'email'          => 'admin@admin.com',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
-                'locale'         => '',
             ],
         ];
 

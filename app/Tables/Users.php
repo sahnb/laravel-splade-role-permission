@@ -22,7 +22,7 @@ class Users extends AbstractTable
 
     public function for()
     {
-        return User::query();
+        return User::with('roles')->latest();
     }
 
 
@@ -33,7 +33,9 @@ class Users extends AbstractTable
             ->column('id', sortable: true)
             ->column('name', sortable: true)
             ->column('email', label: 'Email', sortable: true)
-            ->column('role_id', 'Role', sortable: true)
+            ->column('roles.title', 'Role', sortable: true)
+            ->column('status', 'Status', sortable: true)
+            ->column(label: 'Actions')
             ->withGlobalSearch()
             ->bulkAction(
                 'Bulk Delete',
