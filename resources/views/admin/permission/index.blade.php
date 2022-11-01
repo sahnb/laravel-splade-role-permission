@@ -14,7 +14,7 @@
                 <x-action-delete-button confirm="Delete Permission"
                                         confirm-text="Are you sure you want to delete permission: {{$permission->title}}?"
                                         :action="route('admin.permissions.destroy',$permission->id)"/>
-                <x-action-show-button href="{{route('admin.permissions.show',$permission->id)}}"/>
+                <x-action-show-button slideover href="{{route('admin.permissions.show',$permission->id)}}"/>
                 <x-action-edit-button href="{{route('admin.permissions.edit',$permission->id)}}"/>
 
 

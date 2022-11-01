@@ -52,7 +52,14 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
+        $permissions = Permission::select('id', 'title')
+            ->get()
+            ->pluck('title', 'id');
 
+        return view('admin.role.show', [
+            'role' => $role,
+            'permissions'=>$permissions
+        ]);
     }
 
 

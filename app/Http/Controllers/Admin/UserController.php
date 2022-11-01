@@ -23,7 +23,6 @@ class UserController extends Controller
         ]);
     }
 
-
     public function create()
     {
         $roles = Role::get()->pluck('title', 'id');
@@ -32,7 +31,6 @@ class UserController extends Controller
             'roles' => $roles
         ]);
     }
-
 
     public function store(StoreUserRequest $request)
     {
@@ -50,13 +48,10 @@ class UserController extends Controller
 
     }
 
-
     public function show(User $user)
     {
-
         return view('admin.user.show', [
             'user' => $user
-
         ]);
     }
 

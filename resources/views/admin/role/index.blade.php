@@ -13,7 +13,7 @@
                 <x-action-delete-button confirm="Delete Role"
                                         confirm-text="Are you sure you want to delete Role: {{$role->title}}?"
                                         :action="route('admin.roles.destroy',$role->id)"/>
-                <x-action-show-button href="{{route('admin.roles.show',$role->id)}}"/>
+                <x-action-show-button slideover href="{{route('admin.roles.show',$role->id)}}"/>
                 <x-action-edit-button href="{{route('admin.roles.edit',$role->id)}}"/>
             </div>
         </x-splade-cell>
